@@ -15,9 +15,8 @@ if __name__ == '__main__':
               os.environ["ACCESS_TOKEN_SECRET"])
 
     for tweet in api.GetStreamFilter(track=TAGS):
-        if not tweet["possibly_sensitive"]:
-            tweets = mc.get("last_tweets") or []
-            tweets = sorted(tweets, key=lambda x: x["created_at"], reverse=True)[:MAX_TWEETS-1]
-            tweets = [tweet] + tweets
-            mc.set("last_tweets", tweets)
+        tweets = mc.get("last_tweets") or []
+        tweets = sorted(tweets, key=lambda x: x["created_at"], reverse=True)[:MAX_TWEETS-1]
+        tweets = [tweet] + tweets
+        mc.set("last_tweets", tweets)
 
