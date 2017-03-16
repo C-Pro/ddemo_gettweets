@@ -6,5 +6,5 @@ ADD get_tweets.py /var/www/
 ADD docker_entrypoint.sh /var/www
 WORKDIR /var/www
 
-CMD ["docker_entrypoint.sh"]
+CMD ["/bin/sh", "docker_entrypoint.sh"]
 
